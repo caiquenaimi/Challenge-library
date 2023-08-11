@@ -211,7 +211,6 @@ class Book {
         this.author = author;
         this.pages = pages;
     }
-
 }
 
 class User {
@@ -222,6 +221,12 @@ class User {
     }
     getBookBorrowed(book) {
         this.booksBorrowed.push(book);
+    }
+    getBookByUser(){
+        console.log(this.name);
+        this.booksBorrowed.forEach(book => {
+            console.log(book.title);
+        });
     }
 }
 
@@ -240,18 +245,23 @@ class Library {
 
 }
 
-const book1 = new Book('Harry Potter', 'J.K Rowling', 300);
+const book1 = new Book('Harry Potter and the Sorcerer Stone', 'J.K Rowling', 264);
+const book2 = new Book('Harry Potter and the Chamber of the Secrets', 'J.K Rowling', 285);
+const book3 = new Book('Harry Potter and the Prisoner of Azkaban', 'J.K Rowling', 348);
 const user1 = new User('Caique', 16);
+const user2 = new User('Thiago', 24);
+const user3 = new User('Felipe', 30);
 const library = new Library();
 
 library.addBook(book1);
+library.addBook(book2);
+library.addBook(book3);
 library.addUser(user1);
 
 user1.getBookBorrowed(book1);
+user1.getBookBorrowed(book2);
+user1.getBookBorrowed(book3);
 
-console.log(book1);
-console.log(user1);
-console.log(library);
 
-console.log(user1.booksBorrowed[0].title);
-//console.log(library.getAllRelationsWithBookByUser());   
+user1.getBookByUser();
+
